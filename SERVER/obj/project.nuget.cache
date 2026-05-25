@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "rDi9agcMu1k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Brain\\Desktop\\SERVER\\SERVER.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Brain\\.nuget\\packages\\bouncycastle.cryptography\\2.6.2\\bouncycastle.cryptography.2.6.2.nupkg.sha512",
+    "C:\\Users\\Brain\\.nuget\\packages\\mailkit\\4.16.0\\mailkit.4.16.0.nupkg.sha512",
+    "C:\\Users\\Brain\\.nuget\\packages\\mimekit\\4.16.0\\mimekit.4.16.0.nupkg.sha512",
+    "C:\\Users\\Brain\\.nuget\\packages\\system.security.cryptography.pkcs\\10.0.0\\system.security.cryptography.pkcs.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

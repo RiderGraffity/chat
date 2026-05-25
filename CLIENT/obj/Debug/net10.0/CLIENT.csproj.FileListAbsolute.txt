@@ -1,0 +1,14 @@
+C:\Users\Brain\Desktop\CLIENT\bin\Debug\net10.0\CLIENT.exe
+C:\Users\Brain\Desktop\CLIENT\bin\Debug\net10.0\CLIENT.deps.json
+C:\Users\Brain\Desktop\CLIENT\bin\Debug\net10.0\CLIENT.runtimeconfig.json
+C:\Users\Brain\Desktop\CLIENT\bin\Debug\net10.0\CLIENT.dll
+C:\Users\Brain\Desktop\CLIENT\bin\Debug\net10.0\CLIENT.pdb
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.AssemblyInfoInputs.cache
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.AssemblyInfo.cs
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.csproj.CoreCompileInputs.cache
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.dll
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\refint\CLIENT.dll
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.pdb
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\CLIENT.genruntimeconfig.cache
+C:\Users\Brain\Desktop\CLIENT\obj\Debug\net10.0\ref\CLIENT.dll

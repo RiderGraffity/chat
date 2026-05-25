@@ -1,0 +1,26 @@
+[
+  {
+    "Username": "qwe",
+    "Color": "#FF0000",
+    "PasswordHash": "489CD5DBC708C7E541DE4D7CD91CE6D0F1613573B7FC5B40D3942CCB9555CF35",
+    "Email": ""
+  },
+  {
+    "Username": "Egor",
+    "Color": "#FF0000",
+    "PasswordHash": "524542921B9A4230A9B3549C3B9D5A1EA1806047903C054C7FC9F89F5839E7AC",
+    "Email": ""
+  },
+  {
+    "Username": "rom",
+    "Color": "#00FF00",
+    "PasswordHash": "1A0806C20104D3461D8EDE70362F16734DBD6A17DB24005D1841A7387C9B2405",
+    "Email": "efomin439@gmail.com"
+  },
+  {
+    "Username": "kok",
+    "Color": "#00FF00",
+    "PasswordHash": "D6BA8BF227BA2C637C444A9F59764F28DA0E06C868770F1BE41278C536EFB6B3",
+    "Email": "efomin439@gmail.com"
+  }
+]
