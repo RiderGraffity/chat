@@ -26,8 +26,7 @@ namespace ChatClient
         private HashSet<string> _conversations = new();
         private HashSet<string> _seen          = new();
 
-        // ── Синхронизация истории ─────────────────────────────────────
-        // Когда чат открывается, он создаёт TCS и ждёт историю из TcpLoop.
+
         private TaskCompletionSource<List<ChatMessage>?>? _historyTcs;
 
         public async Task Run()
@@ -62,9 +61,7 @@ namespace ChatClient
             Console.CursorVisible = true;
         }
 
-        // ════════════════════════════════════════════════════════════════
-        //  AUTH: реєстрація з email-верифікацією + вхід
-        // ════════════════════════════════════════════════════════════════
+
         private async Task<bool> Auth()
         {
             while (true)
@@ -97,7 +94,6 @@ namespace ChatClient
 
                 if (isReg)
                 {
-                    // ── email для верифікації
                     Console.Write("  Email: ");
                     email = Console.ReadLine()?.Trim() ?? "";
                     if (string.IsNullOrEmpty(email) || !email.Contains('@'))
@@ -124,18 +120,18 @@ namespace ChatClient
                     Payload = PacketHelper.Serialize(req)
                 });
 
-                // читаємо відповідь
+
                 var resp = await ReadAuthResponse();
                 if (resp == null) return false;
 
                 UIHelper.ClearScreen();
 
-                // ── Сервер хоче підтвердження коду ──
+    
                 if (resp.NeedsVerification)
                 {
                     UIHelper.PrintInfo(resp.Message);
 
-                    // до 3 спроб ввести код
+
                     bool verified = false;
                     for (int attempt = 1; attempt <= 3; attempt++)
                     {
@@ -177,7 +173,7 @@ namespace ChatClient
                         }
                         else
                         {
-                            // невідома помилка
+
                             UIHelper.PrintError(vResp.Message);
                             break;
                         }
@@ -191,7 +187,7 @@ namespace ChatClient
                     continue;
                 }
 
-                // ── Успіх або помилка (звичайний вхід) ──
+
                 if (resp.Success)
                 {
                     UIHelper.PrintSuccess(resp.Message);
@@ -208,7 +204,7 @@ namespace ChatClient
             }
         }
 
-        /// Зчитує рядок з сокета і розбирає AuthResponse
+
         private async Task<AuthResponse?> ReadAuthResponse()
         {
             var line = await _reader!.ReadLineAsync();
@@ -218,9 +214,7 @@ namespace ChatClient
             return PacketHelper.Deserialize<AuthResponse>(p.Payload);
         }
 
-        // ════════════════════════════════════════════════════════════════
-        //  NETWORK
-        // ════════════════════════════════════════════════════════════════
+
         private async Task SendPacket(Packet p)
         {
             try
@@ -313,17 +307,17 @@ namespace ChatClient
                     }
                     break;
 
-                // ── Відповідь на запит GetHistory ───────────────────────
+
                 case MessageType.HistoryResponse:
                     var history = PacketHelper.Deserialize<List<ChatMessage>>(p.Payload);
-                    // Якщо є чекаючий TCS — передаємо туди, не виводимо тут
+
                     if (_historyTcs != null)
                     {
                         _historyTcs.TrySetResult(history);
                     }
                     else
                     {
-                        // fallback: команда /history в чаті
+
                         if (history != null)
                             foreach (var m in history)
                                 UIHelper.PrintMessage(m);
@@ -366,9 +360,6 @@ namespace ChatClient
             }
         }
 
-        // ════════════════════════════════════════════════════════════════
-        //  UI
-        // ════════════════════════════════════════════════════════════════
         private async Task Menu()
         {
             while (true)
@@ -410,7 +401,7 @@ namespace ChatClient
             Console.WriteLine("│ Команди: /exit  /history            │");
             Console.WriteLine("└─────────────────────────────────────┘\n");
 
-            // ── Завантажуємо і виводимо історію до першого промпту ──
+
             await LoadAndPrintHistory("GLOBAL");
 
             while (true)
@@ -516,10 +507,10 @@ namespace ChatClient
             _privateWith = "";
         }
 
-        // ── Допоміжний метод: запит + очікування + вивід ─────────────
+
         private async Task LoadAndPrintHistory(string payload)
         {
-            // Створюємо TCS, щоб TcpLoop передав нам результат синхронно
+
             _historyTcs = new TaskCompletionSource<List<ChatMessage>?>();
 
             await SendPacket(new Packet
@@ -528,7 +519,7 @@ namespace ChatClient
                 Payload = payload
             });
 
-            // Чекаємо до 3 секунд
+
             var completed = await Task.WhenAny(_historyTcs.Task,
                 Task.Delay(TimeSpan.FromSeconds(3)));
 
@@ -542,7 +533,7 @@ namespace ChatClient
             {
                 foreach (var m in history)
                     UIHelper.PrintMessage(m);
-                Console.WriteLine(); // відступ перед промптом
+                Console.WriteLine(); 
             }
             else if (history != null)
             {
