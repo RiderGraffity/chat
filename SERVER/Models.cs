@@ -13,7 +13,7 @@ namespace ChatServer.Models
         GetUsers, UsersResponse,
         GetPending, PendingResponse,
         UserJoined,
-        VerifyCode          // новый тип: подтверждение email-кода
+        VerifyCode         
     }
 
     class Packet
@@ -27,7 +27,7 @@ namespace ChatServer.Models
         public string Username     { get; set; } = "";
         public string Color        { get; set; } = "";
         public string PasswordHash { get; set; } = "";
-        public string Email        { get; set; } = "";   // добавлено
+        public string Email        { get; set; } = "";  
     }
 
     class ChatMessage
@@ -44,7 +44,7 @@ namespace ChatServer.Models
         public string Username   { get; set; } = "";
         public string Password   { get; set; } = "";
         public string Color      { get; set; } = "";
-        public string Email      { get; set; } = "";   // добавлено
+        public string Email      { get; set; } = "";  
         public bool   IsRegister { get; set; }
     }
 
@@ -54,7 +54,7 @@ namespace ChatServer.Models
         public string Message          { get; set; } = "";
         public string Username         { get; set; } = "";
         public string Color            { get; set; } = "";
-        public bool   NeedsVerification { get; set; }  // добавлено: ждём код
+        public bool   NeedsVerification { get; set; }  
     }
 
     class PendingInfo
@@ -64,7 +64,7 @@ namespace ChatServer.Models
         public List<ChatMessage> Messages   { get; set; } = new();
     }
 
-    // Пакет с кодом подтверждения от клиента
+
     class VerifyCodeRequest
     {
         public string Username { get; set; } = "";
