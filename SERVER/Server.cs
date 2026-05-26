@@ -104,7 +104,6 @@ namespace ChatServer
 
             if (p.Type == MessageType.Register)
             {
-                // ── РЕЄСТРАЦІЯ: перевіряємо унікальність і надсилаємо код ──
                 if (!_store.CanRegister(req.Username))
                 {
                     await s.Send(new Packet
@@ -193,7 +192,6 @@ namespace ChatServer
             }
         }
 
-        // ── Підтвердження email-коду ──────────────────────────────────
         private async Task HandleVerifyCode(Session s, Packet p)
         {
             var req = PacketHelper.Deserialize<VerifyCodeRequest>(p.Payload);
@@ -204,7 +202,6 @@ namespace ChatServer
             AuthResponse resp;
             if (ok)
             {
-                // Знаходимо щойно зареєстрованого користувача напряму
                 var user = _store.GetUsers()
                     .FirstOrDefault(u =>
                         u.Username.Equals(req.Username, StringComparison.OrdinalIgnoreCase));
