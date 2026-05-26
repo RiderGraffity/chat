@@ -25,7 +25,7 @@ namespace ChatServer.Services
         private Dictionary<string, List<ChatMessage>> _private = new();
         private Dictionary<string, List<ChatMessage>> _pending = new();
 
-        // username → данные ожидающей верификации
+
         private readonly Dictionary<string, PendingReg> _pendingReg = new();
 
         private readonly object _lock = new();
@@ -76,9 +76,7 @@ namespace ChatServer.Services
             File.WriteAllText(f, JsonSerializer.Serialize(_private[key], _opts));
         }
 
-        // ── Верификация email ─────────────────────────────────────────
 
-        /// Проверяет, что username не занят. Не регистрирует пользователя.
         public bool CanRegister(string username)
         {
             lock (_lock)
@@ -86,7 +84,7 @@ namespace ChatServer.Services
                     u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
         }
 
-        /// Сохраняет ожидающую верификацию (заменяет предыдущую).
+
         public void StorePendingReg(string username, string code,
                                     string hash, string color, string email)
         {
@@ -96,8 +94,7 @@ namespace ChatServer.Services
                     DateTime.UtcNow.AddMinutes(10));
         }
 
-        /// Проверяет код и регистрирует пользователя.
-        /// Возвращает: true = успех, false = неверный/истёкший код.
+
         public bool ConfirmRegistration(string username, string code)
         {
             lock (_lock)
@@ -110,7 +107,7 @@ namespace ChatServer.Services
                     return false;
                 }
 
-                // повторная проверка – вдруг кто-то успел зарегать тот же ник
+
                 if (_users.Any(u =>
                     u.Username.Equals(username, StringComparison.OrdinalIgnoreCase)))
                 {
@@ -131,7 +128,7 @@ namespace ChatServer.Services
             }
         }
 
-        // ── Стандартные методы ────────────────────────────────────────
+
 
         public bool Register(string username, string hash, string color)
         {
