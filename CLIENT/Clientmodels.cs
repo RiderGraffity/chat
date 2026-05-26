@@ -6,16 +6,16 @@ namespace ChatClient.Models
     enum MessageType
     {
         Register, Login, AuthResponse,
-        GlobalMessage,      // = 3  (було пропущено — баг оригіналу, виправлено)
-        PrivateMessage,     // = 4
-        GetHistory,         // = 5
-        HistoryResponse,    // = 6
-        GetUsers,           // = 7
-        UsersResponse,      // = 8
-        GetPending,         // = 9
-        PendingResponse,    // = 10
-        UserJoined,         // = 11
-        VerifyCode          // = 12
+        GlobalMessage,      
+        PrivateMessage,    
+        GetHistory,         
+        HistoryResponse,    
+        GetUsers,         
+        UsersResponse,    
+        GetPending,         
+        PendingResponse,    
+        UserJoined,         
+        VerifyCode         
     }
 
     class Packet
