@@ -2,7 +2,7 @@
   "SmtpHost": "smtp.gmail.com",
   "SmtpPort": 587,
   "UseTls": true,
-  "Username": "dimaderzinskij01@gmail.com",
-  "Password": "lqxd fjox rwlb llyq",
+  "Username": "ваша почта ",
+  "Password": "Ваш пароль",
   "From": "dimaderzinskij01@gmail.com"
 }
