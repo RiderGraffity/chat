@@ -39,10 +39,7 @@ namespace ChatServer.Services
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    //  Конфиг почты читается из  data/email_config.json
-    //  Если файла нет – создаётся шаблон, код выводится в консоль.
-    // ──────────────────────────────────────────────────────────────
+
     class EmailConfig
     {
         public string SmtpHost { get; set; } = "";
@@ -62,7 +59,7 @@ namespace ChatServer.Services
         {
             if (!File.Exists(ConfigPath))
             {
-                // создаём шаблон-подсказку
+
                 var template = new EmailConfig
                 {
                     SmtpHost = "smtp.gmail.com",
@@ -100,7 +97,7 @@ namespace ChatServer.Services
         public static async Task<bool> SendVerificationCode(
             string toEmail, string username, string code)
         {
-            // якщо конфіг не заповнено – просто виводимо код у консоль
+
             if (_cfg == null || string.IsNullOrWhiteSpace(_cfg.SmtpHost)
                             || _cfg.Username == "your-email@gmail.com")
             {
